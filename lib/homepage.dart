@@ -21,6 +21,18 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
+  String getBMIStatus(double bmi) {
+    if (bmi < 18.5 && bmi > 0.1) {
+      return 'You are Underweight';
+    } else if (bmi < 24.9) {
+      return 'You have the Ideal weight';
+    } else if (bmi < 29.9) {
+      return 'You are Overweight';
+    }
+    return "";
+
+  }
+
   void resetButton() {
     heightController.clear();
     weightController.clear();
@@ -68,6 +80,7 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 20),
             Text("BMI: $formattedNumber"),
+            Text(getBMIStatus(double.parse(formattedNumber)))
           ],
         ),
       ),
