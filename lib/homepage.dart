@@ -28,15 +28,17 @@ class _HomePageState extends State<HomePage> {
       return 'You have the Ideal weight';
     } else if (bmi < 29.9) {
       return 'You are Overweight';
+    } else if (bmi == 0.0) {
+      return "";
     }
     return "";
-
   }
 
   void resetButton() {
     heightController.clear();
     weightController.clear();
     formattedNumber = "0.0";
+    getBMIStatus(0.0);
     setState(() {});
   }
 
@@ -80,7 +82,7 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 20),
             Text("BMI: $formattedNumber"),
-            Text(getBMIStatus(double.parse(formattedNumber)))
+            Text(getBMIStatus(bmiResult))
           ],
         ),
       ),
